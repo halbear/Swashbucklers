@@ -1,0 +1,7 @@
+{
+  "parent": "hpm:custom/handcannon",
+  "textures": {
+    "0": "hpm:blocks/handcannon",
+    "particle": "hpm:items/handcannon"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "_fv": 39,
+  "_type": "command",
+  "definition": {
+    "commandName": "ShipSpeed",
+    "permissionLevel": "2",
+    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"number_min_max\"><field name=\"name\">speed</field><field name=\"min\">-255</field><field name=\"max\">255</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">Shipspeedmultiplierprocedure</field></block></statement></block></next></block><block type=\"message\" x=\"42\" y=\"205\"><field name=\"name\">speed</field></block></xml>"
+  }
+}

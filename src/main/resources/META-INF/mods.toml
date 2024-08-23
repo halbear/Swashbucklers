@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="Academic Free License v3.0"
+
+[[mods]]
+modId="hpm"
+version="2.6.4"
+displayName="HalsPirateMod"
+credits="Halbear gamez"
+displayURL="https://www.curseforge.com/members/halbear_gamez/projects"
+logoFile="logo.png"
+authors="Halbear"
+description='''
+a small ship mod
+'''
+
+[[dependencies.hpm]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

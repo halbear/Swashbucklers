@@ -1,0 +1,66 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Entities",
+    "items": [],
+    "blocks": [],
+    "functions": [],
+    "entities": [
+      {
+        "value": "CUSTOM:CorvetteSteamship"
+      },
+      {
+        "value": "CUSTOM:Corvettesteamshipdamaged"
+      },
+      {
+        "value": "CUSTOM:Cutter"
+      },
+      {
+        "value": "CUSTOM:CutterPirate"
+      },
+      {
+        "value": "CUSTOM:Cutterdamaged"
+      },
+      {
+        "value": "CUSTOM:Cuttermilitarised"
+      },
+      {
+        "value": "CUSTOM:Cuttermilitariseddamaged"
+      },
+      {
+        "value": "CUSTOM:Cutterpiratedamaged"
+      },
+      {
+        "value": "CUSTOM:Cutterpiratewreck"
+      },
+      {
+        "value": "CUSTOM:Cutterwreckback"
+      },
+      {
+        "value": "CUSTOM:Cutterwreckfront"
+      },
+      {
+        "value": "CUSTOM:Raft"
+      },
+      {
+        "value": "CUSTOM:Shipwreckedraft"
+      },
+      {
+        "value": "CUSTOM:Shipwreckswashbuckler"
+      },
+      {
+        "value": "CUSTOM:Swashbuckler"
+      },
+      {
+        "value": "CUSTOM:Swashbucklerupgraded"
+      },
+      {
+        "value": "CUSTOM:Wreckedswashbucklerupgrade"
+      }
+    ],
+    "biomes": [],
+    "name": "ship",
+    "namespace": "mod"
+  }
+}

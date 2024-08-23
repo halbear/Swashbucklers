@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "CUSTOM:SmallMast"
+      },
+      {
+        "value": "CUSTOM:Largemast"
+      },
+      {
+        "value": "CUSTOM:SmallMast"
+      },
+      {
+        "value": "CUSTOM:Largehull"
+      },
+      {
+        "value": "CUSTOM:Cutteritem"
+      },
+      {
+        "value": "CUSTOM:Largehull"
+      },
+      {
+        "value": "CUSTOM:HandCannon"
+      },
+      {
+        "value": "CUSTOM:HandCannon"
+      },
+      {
+        "value": "Blocks.BARREL"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Cuttermilitariseditem"
+    },
+    "name": "cuttermilitary",
+    "namespace": "mod"
+  }
+}

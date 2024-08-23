@@ -1,0 +1,15 @@
+{
+  "_fv": 39,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "S",
+    "keyBindingName": "Sail speed down",
+    "keyBindingCategoryKey": "movement",
+    "onKeyPressed": {
+      "name": "Sailspeeddowntoggle"
+    },
+    "onKeyReleased": {
+      "name": "Sailspeeddownonkeyreleased"
+    }
+  }
+}

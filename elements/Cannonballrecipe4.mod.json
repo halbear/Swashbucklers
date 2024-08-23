@@ -1,0 +1,46 @@
+{
+  "_fv": 39,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "recipeRetstackSize": 16,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.SMOOTH_STONE"
+      },
+      {
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Blocks.SMOOTH_STONE"
+      },
+      {
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Blocks.SMOOTH_STONE"
+      },
+      {
+        "value": "Blocks.TNT"
+      },
+      {
+        "value": "Blocks.SMOOTH_STONE"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Cannonball"
+    },
+    "name": "cannonballrecipe_4",
+    "namespace": "mod"
+  }
+}

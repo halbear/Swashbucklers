@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "hpm:hand_cannon"
+    },
+    {
+      "item": "hpm:swashbuckleritem"
+    },
+    {
+      "item": "minecraft:chest"
+    }
+  ],
+  "result": {
+    "item": "hpm:swashbucklerupgrade",
+    "count": 1
+  }
+}

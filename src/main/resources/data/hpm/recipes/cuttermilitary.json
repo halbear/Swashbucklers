@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "hpm:small_mast"
+    },
+    "1": {
+      "item": "hpm:largemast"
+    },
+    "2": {
+      "item": "hpm:small_mast"
+    },
+    "3": {
+      "item": "hpm:largehull"
+    },
+    "4": {
+      "item": "hpm:cutteritem"
+    },
+    "5": {
+      "item": "hpm:largehull"
+    },
+    "6": {
+      "item": "hpm:hand_cannon"
+    },
+    "7": {
+      "item": "hpm:hand_cannon"
+    },
+    "8": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "item": "hpm:cuttermilitariseditem",
+    "count": 1
+  }
+}

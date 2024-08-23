@@ -1,0 +1,21 @@
+{
+  "_fv": 39,
+  "_type": "tag",
+  "definition": {
+    "type": "Entities",
+    "items": [],
+    "blocks": [],
+    "functions": [],
+    "entities": [
+      {
+        "value": "CUSTOM:CorvetteSteamship"
+      },
+      {
+        "value": "CUSTOM:Corvettesteamshipdamaged"
+      }
+    ],
+    "biomes": [],
+    "name": "large_ship",
+    "namespace": "forge"
+  }
+}

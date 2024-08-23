@@ -1,0 +1,12 @@
+{
+  "_fv": 39,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "G",
+    "keyBindingName": "Cannon Left",
+    "keyBindingCategoryKey": "gameplay",
+    "onKeyReleased": {
+      "name": "CannonLeftOnKeyReleased"
+    }
+  }
+}

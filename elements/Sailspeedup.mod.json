@@ -1,0 +1,15 @@
+{
+  "_fv": 39,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "W",
+    "keyBindingName": "Sail speed up",
+    "keyBindingCategoryKey": "movement",
+    "onKeyPressed": {
+      "name": "SailspeedupOnKeyPressed"
+    },
+    "onKeyReleased": {
+      "name": "SailspeedupOnKeyReleased"
+    }
+  }
+}

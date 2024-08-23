@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345"
+  ],
+  "key": {
+    "0": {
+      "tag": "minecraft:planks"
+    },
+    "1": {
+      "item": "minecraft:oak_log"
+    },
+    "2": {
+      "tag": "minecraft:planks"
+    },
+    "3": {
+      "tag": "minecraft:planks"
+    },
+    "4": {
+      "tag": "minecraft:planks"
+    },
+    "5": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "hpm:smallhull",
+    "count": 1
+  }
+}
