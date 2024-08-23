@@ -19,5 +19,6 @@ gradle-app.setting
 
 #mcreator files
 .mcreator
+hpm.mcreator
 mcreator.gradle
 **/.mcreator/
