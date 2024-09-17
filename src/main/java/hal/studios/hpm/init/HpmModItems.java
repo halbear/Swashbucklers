@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 
 import hal.studios.hpm.item.SwashbucklerupgradeItem;
 import hal.studios.hpm.item.SwashbuckleritemItem;
+import hal.studios.hpm.item.SpannerItem;
 import hal.studios.hpm.item.SmallhullItem;
 import hal.studios.hpm.item.SmallMastItem;
 import hal.studios.hpm.item.RaftitemItem;
@@ -36,4 +37,5 @@ public class HpmModItems {
 	public static final RegistryObject<Item> LARGEMAST = REGISTRY.register("largemast", () -> new LargemastItem());
 	public static final RegistryObject<Item> CUTTERITEM = REGISTRY.register("cutteritem", () -> new CutteritemItem());
 	public static final RegistryObject<Item> CUTTERMILITARISEDITEM = REGISTRY.register("cuttermilitariseditem", () -> new CuttermilitariseditemItem());
+	public static final RegistryObject<Item> SPANNER = REGISTRY.register("spanner", () -> new SpannerItem());
 }

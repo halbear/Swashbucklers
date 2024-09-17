@@ -56,6 +56,7 @@ import io.netty.buffer.Unpooled;
 import hal.studios.hpm.world.inventory.CutterinventoryMenu;
 import hal.studios.hpm.procedures.CutterOnInitialEntitySpawnProcedure;
 import hal.studios.hpm.procedures.CutterOnEntityTickUpdateProcedure;
+import hal.studios.hpm.procedures.CutterEntityIsHurtProcedure;
 import hal.studios.hpm.procedures.CutterEntityDiesProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
@@ -114,6 +115,7 @@ public class CutterEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		CutterEntityIsHurtProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this, source.getEntity());
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.DROWN)

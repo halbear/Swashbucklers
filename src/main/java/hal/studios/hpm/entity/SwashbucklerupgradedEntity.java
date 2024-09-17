@@ -55,6 +55,7 @@ import io.netty.buffer.Unpooled;
 
 import hal.studios.hpm.world.inventory.SwashbucklerinventoryMenu;
 import hal.studios.hpm.procedures.UpgradeddestroyedProcedure;
+import hal.studios.hpm.procedures.UpgradedSwashbucklerHurtProcedure;
 import hal.studios.hpm.procedures.SwashbuckleroninitialspawnProcedure;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
 import hal.studios.hpm.init.HpmModEntities;
@@ -114,6 +115,7 @@ public class SwashbucklerupgradedEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		UpgradedSwashbucklerHurtProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this, source.getEntity());
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.DROWN)

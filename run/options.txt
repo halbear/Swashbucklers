@@ -1,5 +1,5 @@
 version:2975
-autoJump:true
+autoJump:false
 autoSuggestions:true
 chatColors:true
 chatLinks:true
@@ -13,7 +13,7 @@ realmsNotifications:true
 reducedDebugInfo:false
 showSubtitles:false
 touchscreen:false
-fullscreen:false
+fullscreen:true
 bobView:true
 toggleCrouch:false
 toggleSprint:false
@@ -24,7 +24,7 @@ fov:0.0
 screenEffectScale:1.0
 fovEffectScale:1.0
 gamma:0.5
-renderDistance:17
+renderDistance:20
 simulationDistance:12
 entityDistanceScaling:1.0
 guiScale:0
@@ -113,8 +113,9 @@ key_key.hpm.sailspeedup:key.keyboard.w
 key_key.hpm.sailspeeddown:key.keyboard.s
 key_key.hpm.rotateshipleft:key.keyboard.a
 key_key.hpm.rotateshipright:key.keyboard.d
-soundCategory_master:0.0
-soundCategory_music:1.0
+key_key.hpm.cannon_left:key.keyboard.g
+soundCategory_master:0.2615894
+soundCategory_music:0.33943662
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

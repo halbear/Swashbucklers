@@ -98,6 +98,9 @@
     "whenMobDies": {
       "name": "Cuttermilitariseddamage"
     },
+    "whenMobIsHurt": {
+      "name": "MilCutterHurt"
+    },
     "onMobTickUpdate": {
       "name": "CutterOnEntityTickUpdate"
     },

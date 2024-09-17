@@ -98,6 +98,9 @@
     "whenMobDies": {
       "name": "Upgradeddestroyed"
     },
+    "whenMobIsHurt": {
+      "name": "UpgradedSwashbucklerHurt"
+    },
     "onMobTickUpdate": {
       "name": "SmallShipBuoyancy"
     },

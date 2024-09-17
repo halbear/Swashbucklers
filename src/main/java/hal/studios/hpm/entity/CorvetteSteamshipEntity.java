@@ -126,8 +126,6 @@ public class CorvetteSteamshipEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (source.getDirectEntity() instanceof Player)
-			return false;
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.CACTUS)

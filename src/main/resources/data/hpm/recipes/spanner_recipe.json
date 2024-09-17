@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 12",
+    " 45",
+    "6  "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:iron_ingot"
+    },
+    "2": {
+      "item": "hpm:smallhull"
+    },
+    "4": {
+      "item": "minecraft:iron_ingot"
+    },
+    "5": {
+      "item": "minecraft:iron_nugget"
+    },
+    "6": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "hpm:spanner",
+    "count": 1
+  }
+}

@@ -34,6 +34,7 @@ import net.minecraft.core.BlockPos;
 import javax.annotation.Nullable;
 
 import hal.studios.hpm.procedures.SwashbuckleroninitialspawnProcedure;
+import hal.studios.hpm.procedures.SwashbucklerHurtProcedure;
 import hal.studios.hpm.procedures.SwashbucklerEntityDiesProcedure;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
 import hal.studios.hpm.init.HpmModEntities;
@@ -93,6 +94,7 @@ public class SwashbucklerEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		SwashbucklerHurtProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this, source.getEntity());
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.DROWN)

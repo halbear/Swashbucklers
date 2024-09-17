@@ -57,6 +57,7 @@ import hal.studios.hpm.world.inventory.RaftinventoryMenu;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
 import hal.studios.hpm.procedures.ShiupwreckraftspawnProcedure;
 import hal.studios.hpm.procedures.RaftspeedProcedure;
+import hal.studios.hpm.procedures.RaftHurtProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
 public class RaftEntity extends PathfinderMob {
@@ -109,6 +110,7 @@ public class RaftEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		RaftHurtProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this, source.getEntity());
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.DROWN)

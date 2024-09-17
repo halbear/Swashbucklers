@@ -9,8 +9,8 @@
       "registry_name": "swashbuckler",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/SwashbucklerEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/SwashbucklerRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/SwashbucklerRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/SwashbucklerEntity.java"
         ]
       },
       "path": "~/swashbuckler"
@@ -24,8 +24,8 @@
       "registry_name": "swashbucklerupgraded",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/client/renderer/SwashbucklerupgradedRenderer.java",
-          "src/main/java/hal/studios/hpm/entity/SwashbucklerupgradedEntity.java"
+          "src/main/java/hal/studios/hpm/entity/SwashbucklerupgradedEntity.java",
+          "src/main/java/hal/studios/hpm/client/renderer/SwashbucklerupgradedRenderer.java"
         ]
       },
       "path": "~/uswashbuckler"
@@ -353,8 +353,8 @@
       "registry_name": "hand_cannon",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/HandCannonEntity.java",
           "src/main/java/hal/studios/hpm/item/HandCannonItem.java",
+          "src/main/java/hal/studios/hpm/entity/HandCannonEntity.java",
           "src/main/resources/assets/hpm/models/item/hand_cannon.json"
         ]
       },
@@ -383,8 +383,8 @@
       "registry_name": "shipwreckswashbuckler",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/client/renderer/ShipwreckswashbucklerRenderer.java",
-          "src/main/java/hal/studios/hpm/entity/ShipwreckswashbucklerEntity.java"
+          "src/main/java/hal/studios/hpm/entity/ShipwreckswashbucklerEntity.java",
+          "src/main/java/hal/studios/hpm/client/renderer/ShipwreckswashbucklerRenderer.java"
         ]
       },
       "path": "~/swashbuckler"
@@ -688,8 +688,8 @@
       "registry_name": "wreckedswashbucklerupgrade",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/WreckedswashbucklerupgradeEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/WreckedswashbucklerupgradeRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/WreckedswashbucklerupgradeRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/WreckedswashbucklerupgradeEntity.java"
         ]
       },
       "path": "~/uswashbuckler"
@@ -739,8 +739,8 @@
       "registry_name": "cutter",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/client/renderer/CutterRenderer.java",
-          "src/main/java/hal/studios/hpm/entity/CutterEntity.java"
+          "src/main/java/hal/studios/hpm/entity/CutterEntity.java",
+          "src/main/java/hal/studios/hpm/client/renderer/CutterRenderer.java"
         ]
       },
       "path": "~/cutter"
@@ -754,8 +754,8 @@
       "registry_name": "cutterwreckfront",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/CutterwreckfrontEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/CutterwreckfrontRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/CutterwreckfrontRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/CutterwreckfrontEntity.java"
         ]
       },
       "path": "~/cutter"
@@ -850,8 +850,8 @@
       "registry_name": "largemast",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/item/LargemastItem.java",
-          "src/main/resources/assets/hpm/models/item/largemast.json"
+          "src/main/resources/assets/hpm/models/item/largemast.json",
+          "src/main/java/hal/studios/hpm/item/LargemastItem.java"
         ]
       },
       "path": "~/items and weapons"
@@ -969,8 +969,8 @@
       "registry_name": "cutterdamaged",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/CutterdamagedEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/CutterdamagedRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/CutterdamagedRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/CutterdamagedEntity.java"
         ]
       },
       "path": "~/cutter"
@@ -1329,8 +1329,8 @@
       "registry_name": "cuttermilitarised",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/CuttermilitarisedEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/CuttermilitarisedRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/CuttermilitarisedRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/CuttermilitarisedEntity.java"
         ]
       },
       "path": "~/milcutter"
@@ -1409,8 +1409,8 @@
       "registry_name": "cuttermilitariseddamaged",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/client/renderer/CuttermilitariseddamagedRenderer.java",
-          "src/main/java/hal/studios/hpm/entity/CuttermilitariseddamagedEntity.java"
+          "src/main/java/hal/studios/hpm/entity/CuttermilitariseddamagedEntity.java",
+          "src/main/java/hal/studios/hpm/client/renderer/CuttermilitariseddamagedRenderer.java"
         ]
       },
       "path": "~/milcutter"
@@ -1496,8 +1496,8 @@
       "registry_name": "corvette_steamship",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/client/renderer/CorvetteSteamshipRenderer.java",
-          "src/main/java/hal/studios/hpm/entity/CorvetteSteamshipEntity.java"
+          "src/main/java/hal/studios/hpm/entity/CorvetteSteamshipEntity.java",
+          "src/main/java/hal/studios/hpm/client/renderer/CorvetteSteamshipRenderer.java"
         ]
       },
       "path": "~/corvette"
@@ -1531,8 +1531,8 @@
       "registry_name": "corvettesteamshipdamaged",
       "metadata": {
         "files": [
-          "src/main/java/hal/studios/hpm/entity/CorvettesteamshipdamagedEntity.java",
-          "src/main/java/hal/studios/hpm/client/renderer/CorvettesteamshipdamagedRenderer.java"
+          "src/main/java/hal/studios/hpm/client/renderer/CorvettesteamshipdamagedRenderer.java",
+          "src/main/java/hal/studios/hpm/entity/CorvettesteamshipdamagedEntity.java"
         ]
       },
       "path": "~/corvette"
@@ -2256,6 +2256,275 @@
         ]
       },
       "path": "~/controls"
+    },
+    {
+      "name": "SpannerRightclicked",
+      "type": "procedure",
+      "sortid": 101,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/SpannerRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/controls"
+    },
+    {
+      "name": "Spanner",
+      "type": "tool",
+      "sortid": 102,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/hpm/models/item/spanner.json",
+          "src/main/java/hal/studios/hpm/item/SpannerItem.java"
+        ]
+      },
+      "path": "~/controls"
+    },
+    {
+      "name": "SpannerRecipe",
+      "type": "recipe",
+      "sortid": 103,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "spanner_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/hpm/recipes/spanner_recipe.json"
+        ]
+      },
+      "path": "~/controls"
+    },
+    {
+      "name": "CutterEntityIsHurt",
+      "type": "procedure",
+      "sortid": 104,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cutter_entity_is_hurt",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/CutterEntityIsHurtProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/cutter"
+    },
+    {
+      "name": "MilCutterHurt",
+      "type": "procedure",
+      "sortid": 105,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mil_cutter_hurt",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/MilCutterHurtProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/milcutter"
+    },
+    {
+      "name": "RaftHurt",
+      "type": "procedure",
+      "sortid": 106,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "raft_hurt",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/RaftHurtProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/raft"
+    },
+    {
+      "name": "UpgradedSwashbucklerHurt",
+      "type": "procedure",
+      "sortid": 107,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "upgraded_swashbuckler_hurt",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/UpgradedSwashbucklerHurtProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/uswashbuckler"
+    },
+    {
+      "name": "SwashbucklerHurt",
+      "type": "procedure",
+      "sortid": 108,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "swashbuckler_hurt",
+      "metadata": {
+        "files": [
+          "src/main/java/hal/studios/hpm/procedures/SwashbucklerHurtProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/swashbuckler"
     }
   ],
   "variable_elements": [
@@ -2311,6 +2580,7 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "item.hpm.spanner": "Spanner",
       "item.hpm.cutterdamaged_spawn_egg": "cutter Spawn Egg",
       "item.hpm.swashbuckler_spawn_egg": "Swashbuckler Spawn Egg",
       "key.hpm.rotateshipleft": "Rotate Ship Left",
@@ -2405,7 +2675,7 @@
   "workspaceSettings": {
     "modid": "hpm",
     "modName": "HalsPirateMod",
-    "version": "2.6.4c",
+    "version": "2.6.5",
     "description": "a small ship mod",
     "author": "Halbear",
     "websiteURL": "https://www.curseforge.com/members/halbear_gamez/projects",

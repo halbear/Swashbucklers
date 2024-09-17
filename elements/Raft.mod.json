@@ -98,6 +98,9 @@
     "whenMobDies": {
       "name": "Shiupwreckraftspawn"
     },
+    "whenMobIsHurt": {
+      "name": "RaftHurt"
+    },
     "onMobTickUpdate": {
       "name": "SmallShipBuoyancy"
     },

@@ -98,6 +98,9 @@
     "whenMobDies": {
       "name": "CutterEntityDies"
     },
+    "whenMobIsHurt": {
+      "name": "CutterEntityIsHurt"
+    },
     "onMobTickUpdate": {
       "name": "CutterOnEntityTickUpdate"
     },

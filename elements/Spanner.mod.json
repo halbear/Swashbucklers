@@ -1,0 +1,35 @@
+{
+  "_fv": 39,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "spanner",
+    "customModelName": "Normal",
+    "name": "Spanner",
+    "specialInfo": [
+      "Used to repair ships"
+    ],
+    "creativeTab": {
+      "value": "CUSTOM:Swashbucklers"
+    },
+    "toolType": "Special",
+    "harvestLevel": 1,
+    "efficiency": 0.5,
+    "attackSpeed": 2.0,
+    "enchantability": 0,
+    "damageVsEntity": 5.0,
+    "usageCount": 50,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": true,
+    "damageOnCrafting": true,
+    "onRightClickedInAir": {
+      "name": "SpannerRightclicked"
+    },
+    "onEntityHitWith": {
+      "name": "SpannerRightclicked"
+    }
+  }
+}
