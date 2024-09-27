@@ -1,5 +1,7 @@
 package hal.studios.hpm.procedures;
 
+import net.minecraftforge.server.ServerLifecycleHooks;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 
@@ -15,11 +17,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.TagKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.ChatType;
 import net.minecraft.core.Registry;
+import net.minecraft.Util;
 
+import java.util.stream.Collectors;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.Random;
+import java.util.List;
+import java.util.Comparator;
 
 import hal.studios.hpm.init.HpmModEntities;
 import hal.studios.hpm.entity.CutterpiratedamagedEntity;
@@ -70,6 +79,19 @@ public class SpannerRightclickedProcedure {
 				if (entityToSpawn instanceof Mob _mobToSpawn)
 					_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
 				world.addFreshEntity(entityToSpawn);
+			}
+			if (!world.isClientSide()) {
+				MinecraftServer _mcserv = ServerLifecycleHooks.getCurrentServer();
+				if (_mcserv != null)
+					_mcserv.getPlayerList().broadcastMessage(new TextComponent((ForgeRegistries.ENTITIES.getKey(entity.getType()).toString())), ChatType.SYSTEM, Util.NIL_UUID);
+			}
+			{
+				final Vec3 _center = new Vec3(x, y, z);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					entityiterator.setCustomName(new TextComponent((entity.getDisplayName().getString())));
+				}
 			}
 			if (!entity.level.isClientSide())
 				entity.discard();

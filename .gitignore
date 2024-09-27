@@ -22,3 +22,8 @@ gradle-app.setting
 hpm.mcreator
 mcreator.gradle
 **/.mcreator/
+**/run/
+**/models/
+**/elements/
+**/.idea/
+**/.settings/
