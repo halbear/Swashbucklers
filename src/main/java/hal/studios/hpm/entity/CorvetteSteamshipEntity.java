@@ -38,6 +38,7 @@ import net.minecraft.nbt.CompoundTag;
 
 import javax.annotation.Nullable;
 
+import hal.studios.hpm.procedures.IDZeroCheckProcedure;
 import hal.studios.hpm.procedures.CorvettedamagedspawnProcedure;
 import hal.studios.hpm.procedures.CorvetteSteamshipOnInitialEntitySpawnProcedure;
 import hal.studios.hpm.procedures.CorvetteSteamshipOnEntityTickUpdateProcedure;
@@ -50,6 +51,7 @@ public class CorvetteSteamshipEntity extends PathfinderMob {
 
 	public CorvetteSteamshipEntity(EntityType<CorvetteSteamshipEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -146,7 +148,7 @@ public class CorvetteSteamshipEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		CorvetteSteamshipOnInitialEntitySpawnProcedure.execute(this);
+		CorvetteSteamshipOnInitialEntitySpawnProcedure.execute(world, this);
 		return retval;
 	}
 
@@ -156,6 +158,13 @@ public class CorvetteSteamshipEntity extends PathfinderMob {
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		IDZeroCheckProcedure.execute(world, entity);
 		return retval;
 	}
 

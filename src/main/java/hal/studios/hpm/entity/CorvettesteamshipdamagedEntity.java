@@ -49,6 +49,7 @@ public class CorvettesteamshipdamagedEntity extends PathfinderMob {
 
 	public CorvettesteamshipdamagedEntity(EntityType<CorvettesteamshipdamagedEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -139,7 +140,7 @@ public class CorvettesteamshipdamagedEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		CorvetteSteamshipOnInitialEntitySpawnProcedure.execute(this);
+		CorvetteSteamshipOnInitialEntitySpawnProcedure.execute(world, this);
 		return retval;
 	}
 

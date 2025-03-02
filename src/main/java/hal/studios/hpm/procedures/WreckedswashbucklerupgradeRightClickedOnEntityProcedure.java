@@ -23,7 +23,7 @@ public class WreckedswashbucklerupgradeRightClickedOnEntityProcedure {
 			entityToSpawn.setPickUpDelay(10);
 			_level.addFreshEntity(entityToSpawn);
 		}
-		for (int index0 = 0; index0 < (int) (4); index0++) {
+		for (int index0 = 0; index0 < 4; index0++) {
 			if (world instanceof Level _level && !_level.isClientSide()) {
 				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Blocks.OAK_PLANKS));
 				entityToSpawn.setPickUpDelay(10);
@@ -35,7 +35,7 @@ public class WreckedswashbucklerupgradeRightClickedOnEntityProcedure {
 			entityToSpawn.setPickUpDelay(10);
 			_level.addFreshEntity(entityToSpawn);
 		}
-		for (int index1 = 0; index1 < (int) (4); index1++) {
+		for (int index1 = 0; index1 < 4; index1++) {
 			if (world instanceof Level _level && !_level.isClientSide()) {
 				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Blocks.WHITE_WOOL));
 				entityToSpawn.setPickUpDelay(10);

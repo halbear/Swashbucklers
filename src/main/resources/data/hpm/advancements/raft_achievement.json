@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:raftitem"
+    },
+    "title": {
+      "translate": "advancements.raft_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.raft_achievement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "raft_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0,
+    "recipes": [
+      "hpm:swashbucklerupgradedrecipe",
+      "hpm:cannonballrecipe_4",
+      "hpm:handcannonrecipe"
+    ]
+  },
+  "parent": "hpm:swashbuckler_achievement"
+}

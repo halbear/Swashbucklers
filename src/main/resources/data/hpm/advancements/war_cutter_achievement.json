@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:cuttermilitariseditem"
+    },
+    "title": {
+      "translate": "advancements.war_cutter_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.war_cutter_achievement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "war_cutter_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "hpm:cutter_achievement"
+}

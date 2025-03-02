@@ -13,7 +13,7 @@
       "item": "hpm:largemast"
     },
     "2": {
-      "item": "hpm:small_mast"
+      "item": "minecraft:iron_ingot"
     },
     "3": {
       "item": "hpm:largehull"
@@ -25,13 +25,13 @@
       "item": "hpm:largehull"
     },
     "6": {
-      "item": "hpm:hand_cannon"
+      "item": "hpm:hand_mortar"
     },
     "7": {
       "item": "hpm:hand_cannon"
     },
     "8": {
-      "item": "minecraft:barrel"
+      "item": "hpm:hand_cannon"
     }
   },
   "result": {

@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "hpm:raft",
+    "hpm:cutter_passenger",
+    "hpm:swashbuckler",
+    "hpm:cutter_militarised_damaged_sails",
+    "hpm:corvettesteamshipdamaged",
+    "hpm:cutter",
+    "hpm:cuttermilitarised",
+    "hpm:cutterpiratedamaged",
+    "hpm:corvette_steamship",
+    "hpm:cutter_sails_damaged",
+    "hpm:cutterdamaged",
+    "hpm:swashbucklerupgraded",
+    "hpm:cuttermilitariseddamaged",
+    "hpm:cutter_pirate",
+    "hpm:cutter_pirate_damaged_sails"
+  ]
+}

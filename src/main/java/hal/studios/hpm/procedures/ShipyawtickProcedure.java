@@ -77,7 +77,7 @@ public class ShipyawtickProcedure {
 				&& (entity.getVehicle()).getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("forge:medium_ship")))) {
 			if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).left == true
 					&& (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).shipyaw > -1) {
-				for (int index0 = 0; index0 < (int) (3); index0++) {
+				for (int index0 = 0; index0 < 3; index0++) {
 					new Object() {
 						private int ticks = 0;
 						private float waitTicks;
@@ -113,7 +113,7 @@ public class ShipyawtickProcedure {
 			}
 			if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).right == true
 					&& (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).shipyaw < 361) {
-				for (int index1 = 0; index1 < (int) (3); index1++) {
+				for (int index1 = 0; index1 < 3; index1++) {
 					new Object() {
 						private int ticks = 0;
 						private float waitTicks;

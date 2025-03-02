@@ -16,13 +16,13 @@
       "item": "hpm:largemast"
     },
     "3": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "4": {
       "item": "hpm:largehull"
     },
     "5": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "6": {
       "item": "minecraft:barrel"

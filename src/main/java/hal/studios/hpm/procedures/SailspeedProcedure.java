@@ -44,7 +44,7 @@ public class SailspeedProcedure {
 				}
 			}
 			if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeeddown == true
-					&& (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed > -20) {
+					&& (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed > -40) {
 				{
 					double _setval = (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed - 1;
 					entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
@@ -54,6 +54,16 @@ public class SailspeedProcedure {
 				}
 			}
 			if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed > 8 && (entity.getVehicle()).getDeltaMovement().z() == 0
+					&& (entity.getVehicle()).getDeltaMovement().x() == 0) {
+				{
+					double _setval = 0;
+					entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+						capability.sailspeed = _setval;
+						capability.syncPlayerVariables(entity);
+					});
+				}
+			}
+			if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed < -5 && (entity.getVehicle()).getDeltaMovement().z() == 0
 					&& (entity.getVehicle()).getDeltaMovement().x() == 0) {
 				{
 					double _setval = 0;

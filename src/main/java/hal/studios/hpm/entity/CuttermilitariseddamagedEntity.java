@@ -4,13 +4,23 @@ package hal.studios.hpm.entity;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.items.wrapper.EntityHandsInvWrapper;
+import net.minecraftforge.items.wrapper.EntityArmorInvWrapper;
+import net.minecraftforge.items.wrapper.CombinedInvWrapper;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.common.capabilities.Capability;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -25,19 +35,32 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
+import io.netty.buffer.Unpooled;
+
+import hal.studios.hpm.world.inventory.CutterinventoryMenu;
+import hal.studios.hpm.procedures.SplinterParticlesProcedure;
 import hal.studios.hpm.procedures.CutterpirateoninitialspawnProcedure;
-import hal.studios.hpm.procedures.CutterpiratedwreckProcedure;
+import hal.studios.hpm.procedures.CuttermilitariseddamagedEntityDiesProcedure;
+import hal.studios.hpm.procedures.CuttermilitarisedRightClickedOnEntityProcedure;
 import hal.studios.hpm.procedures.CutterdamagedOnEntityTickUpdateProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
@@ -48,6 +71,7 @@ public class CuttermilitariseddamagedEntity extends PathfinderMob implements Ran
 
 	public CuttermilitariseddamagedEntity(EntityType<CuttermilitariseddamagedEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 	}
@@ -96,6 +120,7 @@ public class CuttermilitariseddamagedEntity extends PathfinderMob implements Ran
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		SplinterParticlesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.CACTUS)
@@ -110,22 +135,93 @@ public class CuttermilitariseddamagedEntity extends PathfinderMob implements Ran
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		CutterpiratedwreckProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
+		CuttermilitariseddamagedEntityDiesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		CutterpirateoninitialspawnProcedure.execute(this);
+		CutterpirateoninitialspawnProcedure.execute(world, this.getY(), this);
 		return retval;
+	}
+
+	private final ItemStackHandler inventory = new ItemStackHandler(228) {
+		@Override
+		public int getSlotLimit(int slot) {
+			return 64;
+		}
+	};
+	private final CombinedInvWrapper combined = new CombinedInvWrapper(inventory, new EntityHandsInvWrapper(this), new EntityArmorInvWrapper(this));
+
+	@Override
+	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, @Nullable Direction side) {
+		if (this.isAlive() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && side == null)
+			return LazyOptional.of(() -> combined).cast();
+		return super.getCapability(capability, side);
+	}
+
+	@Override
+	protected void dropEquipment() {
+		super.dropEquipment();
+		for (int i = 0; i < inventory.getSlots(); ++i) {
+			ItemStack itemstack = inventory.getStackInSlot(i);
+			if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack)) {
+				this.spawnAtLocation(itemstack);
+			}
+		}
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.put("InventoryCustom", inventory.serializeNBT());
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		Tag inventoryCustom = compound.get("InventoryCustom");
+		if (inventoryCustom instanceof CompoundTag inventoryTag)
+			inventory.deserializeNBT(inventoryTag);
 	}
 
 	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
+		if (sourceentity.isSecondaryUseActive()) {
+			if (sourceentity instanceof ServerPlayer serverPlayer) {
+				NetworkHooks.openGui(serverPlayer, new MenuProvider() {
+					@Override
+					public Component getDisplayName() {
+						return new TextComponent("cutter");
+					}
+
+					@Override
+					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+						FriendlyByteBuf packetBuffer = new FriendlyByteBuf(Unpooled.buffer());
+						packetBuffer.writeBlockPos(sourceentity.blockPosition());
+						packetBuffer.writeByte(0);
+						packetBuffer.writeVarInt(CuttermilitariseddamagedEntity.this.getId());
+						return new CutterinventoryMenu(id, inventory, packetBuffer);
+					}
+				}, buf -> {
+					buf.writeBlockPos(sourceentity.blockPosition());
+					buf.writeByte(0);
+					buf.writeVarInt(this.getId());
+				});
+			}
+			return InteractionResult.sidedSuccess(this.level.isClientSide());
+		}
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		CuttermilitarisedRightClickedOnEntityProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 

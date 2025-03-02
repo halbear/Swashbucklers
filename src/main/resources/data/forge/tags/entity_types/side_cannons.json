@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "hpm:cuttermilitarised",
-    "hpm:cuttermilitariseddamaged"
+    "hpm:cutterpiratedamaged",
+    "hpm:cutter_militarised_damaged_sails",
+    "hpm:cuttermilitariseddamaged",
+    "hpm:cutter_pirate",
+    "hpm:cutter_pirate_damaged_sails"
   ]
 }

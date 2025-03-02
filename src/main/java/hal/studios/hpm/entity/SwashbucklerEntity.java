@@ -34,6 +34,7 @@ import net.minecraft.core.BlockPos;
 import javax.annotation.Nullable;
 
 import hal.studios.hpm.procedures.SwashbuckleroninitialspawnProcedure;
+import hal.studios.hpm.procedures.SwashbucklerRightClickedOnEntityProcedure;
 import hal.studios.hpm.procedures.SwashbucklerHurtProcedure;
 import hal.studios.hpm.procedures.SwashbucklerEntityDiesProcedure;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
@@ -46,6 +47,7 @@ public class SwashbucklerEntity extends PathfinderMob {
 
 	public SwashbucklerEntity(EntityType<SwashbucklerEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -113,7 +115,7 @@ public class SwashbucklerEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		SwashbuckleroninitialspawnProcedure.execute(this);
+		SwashbuckleroninitialspawnProcedure.execute(world, this);
 		return retval;
 	}
 
@@ -123,6 +125,13 @@ public class SwashbucklerEntity extends PathfinderMob {
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		SwashbucklerRightClickedOnEntityProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 

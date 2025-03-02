@@ -52,7 +52,7 @@ public class FireMessage {
 			return;
 		if (type == 1) {
 
-			FireOnKeyReleasedProcedure.execute(world, x, y, z, entity);
+			FireOnKeyReleasedProcedure.execute(world, y, entity);
 		}
 	}
 

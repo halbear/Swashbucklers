@@ -6,15 +6,15 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 import hal.studios.hpm.entity.CutterpiratedamagedEntity;
-import hal.studios.hpm.client.model.Modelcutterpiratedamaged;
+import hal.studios.hpm.client.model.ModelcutterArmedDamaged;
 
-public class CutterpiratedamagedRenderer extends MobRenderer<CutterpiratedamagedEntity, Modelcutterpiratedamaged<CutterpiratedamagedEntity>> {
+public class CutterpiratedamagedRenderer extends MobRenderer<CutterpiratedamagedEntity, ModelcutterArmedDamaged<CutterpiratedamagedEntity>> {
 	public CutterpiratedamagedRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelcutterpiratedamaged(context.bakeLayer(Modelcutterpiratedamaged.LAYER_LOCATION)), 1f);
+		super(context, new ModelcutterArmedDamaged(context.bakeLayer(ModelcutterArmedDamaged.LAYER_LOCATION)), 1f);
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(CutterpiratedamagedEntity entity) {
-		return new ResourceLocation("hpm:textures/entities/cutterpiratedamaged.png");
+		return new ResourceLocation("hpm:textures/entities/cutterpiratedamagedremastered.png");
 	}
 }

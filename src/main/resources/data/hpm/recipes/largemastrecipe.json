@@ -1,33 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "012",
-    "345",
-    " 7 "
-  ],
-  "key": {
-    "0": {
-      "tag": "minecraft:wool"
-    },
-    "1": {
-      "tag": "minecraft:wool"
-    },
-    "2": {
-      "tag": "minecraft:wool"
-    },
-    "3": {
-      "tag": "minecraft:wool"
-    },
-    "4": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "hpm:small_mast"
     },
-    "5": {
-      "tag": "minecraft:wool"
-    },
-    "7": {
-      "item": "minecraft:oak_log"
+    {
+      "item": "hpm:small_mast"
     }
-  },
+  ],
   "result": {
     "item": "hpm:largemast",
     "count": 1

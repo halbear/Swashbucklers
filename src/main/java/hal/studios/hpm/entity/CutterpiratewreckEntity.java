@@ -35,6 +35,7 @@ public class CutterpiratewreckEntity extends PathfinderMob {
 
 	public CutterpiratewreckEntity(EntityType<CutterpiratewreckEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -115,6 +116,16 @@ public class CutterpiratewreckEntity extends PathfinderMob {
 
 		ShipwreckswashbucklerRightClickedOnEntityProcedure.execute(world, x, y, z, entity);
 		return retval;
+	}
+
+	@Override
+	public boolean canCollideWith(Entity entity) {
+		return true;
+	}
+
+	@Override
+	public boolean canBeCollidedWith() {
+		return true;
 	}
 
 	public static void init() {

@@ -20,6 +20,7 @@ public class RaftHurtProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
+		MortarFireProcedure.execute(world, y, entity);
 		if (sourceentity.isShiftKeyDown() && (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == HpmModItems.SPANNER.get()) {
 			{
 				AtomicReference<IItemHandler> _iitemhandlerref = new AtomicReference<>();

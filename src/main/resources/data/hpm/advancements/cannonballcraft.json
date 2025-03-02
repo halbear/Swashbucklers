@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:cannonball"
+    },
+    "title": {
+      "translate": "advancements.cannonballcraft.title"
+    },
+    "description": {
+      "translate": "advancements.cannonballcraft.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cannonballcraft": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hpm:cannonball"
+            ],
+            "count": {
+              "min": 1,
+              "max": 2328
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "hpm:swashbucklers_advancement_branch"
+}

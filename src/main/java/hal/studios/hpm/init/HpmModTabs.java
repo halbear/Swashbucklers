@@ -17,7 +17,7 @@ public class HpmModTabs {
 		TAB_SWASHBUCKLERS = new CreativeModeTab("tabswashbucklers") {
 			@Override
 			public ItemStack makeIcon() {
-				return new ItemStack(HpmModItems.CUTTERITEM.get());
+				return new ItemStack(HpmModItems.CORVETTE_STEAMSHIP_ITEM.get());
 			}
 
 			@OnlyIn(Dist.CLIENT)

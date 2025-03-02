@@ -35,6 +35,7 @@ public class WreckedswashbucklerupgradeEntity extends PathfinderMob {
 
 	public WreckedswashbucklerupgradeEntity(EntityType<WreckedswashbucklerupgradeEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 	}

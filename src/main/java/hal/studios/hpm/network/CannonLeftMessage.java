@@ -12,7 +12,7 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import java.util.function.Supplier;
 
-import hal.studios.hpm.procedures.CannonLeftOnKeyReleasedProcedure;
+import hal.studios.hpm.procedures.FireLeftProcedure;
 import hal.studios.hpm.HpmMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -52,7 +52,7 @@ public class CannonLeftMessage {
 			return;
 		if (type == 1) {
 
-			CannonLeftOnKeyReleasedProcedure.execute(world, x, y, z, entity);
+			FireLeftProcedure.execute(world, y, entity);
 		}
 	}
 

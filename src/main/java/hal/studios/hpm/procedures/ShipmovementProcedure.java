@@ -43,6 +43,14 @@ public class ShipmovementProcedure {
 						(HpmModVariables.WorldVariables.get(world).shipspeedmultiplier * (entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).maxspeed
 								* ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).sailspeed / 100) * (entity.getVehicle()).getLookAngle().z)));
 			}
+		} else if ((entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new HpmModVariables.PlayerVariables())).shipPilotingID > 0) {
+			{
+				double _setval = 0;
+				entity.getCapability(HpmModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.shipPilotingID = _setval;
+					capability.syncPlayerVariables(entity);
+				});
+			}
 		}
 	}
 }

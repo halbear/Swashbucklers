@@ -19,13 +19,13 @@
       "tag": "minecraft:wool"
     },
     "4": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "5": {
       "tag": "minecraft:wool"
     },
     "7": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     }
   },
   "result": {

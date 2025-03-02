@@ -53,7 +53,7 @@ public class SailspeeddownMessage {
 			return;
 		if (type == 0) {
 
-			SailspeeddowntoggleProcedure.execute(world, x, y, z, entity);
+			SailspeeddowntoggleProcedure.execute(entity);
 		}
 		if (type == 1) {
 

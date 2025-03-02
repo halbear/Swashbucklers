@@ -53,7 +53,7 @@ public class SailspeedupMessage {
 			return;
 		if (type == 0) {
 
-			SailspeedupOnKeyPressedProcedure.execute(world, x, y, z, entity);
+			SailspeedupOnKeyPressedProcedure.execute(entity);
 		}
 		if (type == 1) {
 

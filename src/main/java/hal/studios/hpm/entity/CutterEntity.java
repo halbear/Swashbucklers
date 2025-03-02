@@ -54,6 +54,7 @@ import javax.annotation.Nonnull;
 import io.netty.buffer.Unpooled;
 
 import hal.studios.hpm.world.inventory.CutterinventoryMenu;
+import hal.studios.hpm.procedures.CutterRightClickedOnEntityProcedure;
 import hal.studios.hpm.procedures.CutterOnInitialEntitySpawnProcedure;
 import hal.studios.hpm.procedures.CutterOnEntityTickUpdateProcedure;
 import hal.studios.hpm.procedures.CutterEntityIsHurtProcedure;
@@ -67,6 +68,7 @@ public class CutterEntity extends PathfinderMob {
 
 	public CutterEntity(EntityType<CutterEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -134,7 +136,7 @@ public class CutterEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		CutterOnInitialEntitySpawnProcedure.execute(this);
+		CutterOnInitialEntitySpawnProcedure.execute(world, this.getX(), this.getY(), this.getZ(), this);
 		return retval;
 	}
 
@@ -208,6 +210,13 @@ public class CutterEntity extends PathfinderMob {
 		}
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		CutterRightClickedOnEntityProcedure.execute(world, x, y, z, entity, sourceentity);
 		return retval;
 	}
 

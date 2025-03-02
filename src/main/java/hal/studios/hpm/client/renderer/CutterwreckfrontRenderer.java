@@ -6,15 +6,15 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 
 import hal.studios.hpm.entity.CutterwreckfrontEntity;
-import hal.studios.hpm.client.model.Modelcutterwreckfront;
+import hal.studios.hpm.client.model.ModelcutterdWreckFrontremade;
 
-public class CutterwreckfrontRenderer extends MobRenderer<CutterwreckfrontEntity, Modelcutterwreckfront<CutterwreckfrontEntity>> {
+public class CutterwreckfrontRenderer extends MobRenderer<CutterwreckfrontEntity, ModelcutterdWreckFrontremade<CutterwreckfrontEntity>> {
 	public CutterwreckfrontRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelcutterwreckfront(context.bakeLayer(Modelcutterwreckfront.LAYER_LOCATION)), 0.5f);
+		super(context, new ModelcutterdWreckFrontremade(context.bakeLayer(ModelcutterdWreckFrontremade.LAYER_LOCATION)), 0.5f);
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(CutterwreckfrontEntity entity) {
-		return new ResourceLocation("hpm:textures/entities/cutterwrecked.png");
+		return new ResourceLocation("hpm:textures/entities/cutterremasteredwreck.png");
 	}
 }

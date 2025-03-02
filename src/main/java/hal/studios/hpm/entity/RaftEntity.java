@@ -57,6 +57,7 @@ import hal.studios.hpm.world.inventory.RaftinventoryMenu;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
 import hal.studios.hpm.procedures.ShiupwreckraftspawnProcedure;
 import hal.studios.hpm.procedures.RaftspeedProcedure;
+import hal.studios.hpm.procedures.RaftRightClickedOnEntityProcedure;
 import hal.studios.hpm.procedures.RaftHurtProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
@@ -67,6 +68,7 @@ public class RaftEntity extends PathfinderMob {
 
 	public RaftEntity(EntityType<RaftEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -129,7 +131,7 @@ public class RaftEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		RaftspeedProcedure.execute(this);
+		RaftspeedProcedure.execute(world, this);
 		return retval;
 	}
 
@@ -203,6 +205,13 @@ public class RaftEntity extends PathfinderMob {
 		}
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		RaftRightClickedOnEntityProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 

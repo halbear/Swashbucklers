@@ -16,22 +16,22 @@
       "item": "minecraft:barrel"
     },
     "3": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "4": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "5": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "6": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "7": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "8": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     }
   },
   "result": {

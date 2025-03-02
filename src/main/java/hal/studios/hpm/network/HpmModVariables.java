@@ -79,6 +79,13 @@ public class HpmModVariables {
 			clone.right = original.right;
 			clone.maxspeed = original.maxspeed;
 			clone.shipyaw = original.shipyaw;
+			clone.InventoryNum = original.InventoryNum;
+			clone.FirstLogOn = original.FirstLogOn;
+			clone.VersionWarning = original.VersionWarning;
+			clone.shipPilotingID = original.shipPilotingID;
+			clone.CanFire = original.CanFire;
+			clone.CanFireLeft = original.CanFireLeft;
+			clone.CanFireRight = original.CanFireRight;
 			if (!event.isWasDeath()) {
 			}
 		}
@@ -107,7 +114,7 @@ public class HpmModVariables {
 
 	public static class WorldVariables extends SavedData {
 		public static final String DATA_NAME = "hpm_worldvars";
-		public double shipspeedmultiplier = 1.0;
+		public double shipspeedmultiplier = 0.8;
 
 		public static WorldVariables load(CompoundTag tag) {
 			WorldVariables data = new WorldVariables();
@@ -144,6 +151,7 @@ public class HpmModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "hpm_mapvars";
+		public double IDcounter = 1.0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -152,10 +160,12 @@ public class HpmModVariables {
 		}
 
 		public void read(CompoundTag nbt) {
+			IDcounter = nbt.getDouble("IDcounter");
 		}
 
 		@Override
 		public CompoundTag save(CompoundTag nbt) {
+			nbt.putDouble("IDcounter", IDcounter);
 			return nbt;
 		}
 
@@ -251,6 +261,13 @@ public class HpmModVariables {
 		public boolean right = false;
 		public double maxspeed = 0;
 		public double shipyaw = 0;
+		public double InventoryNum = 0;
+		public boolean FirstLogOn = true;
+		public boolean VersionWarning = false;
+		public double shipPilotingID = 0;
+		public boolean CanFire = true;
+		public boolean CanFireLeft = true;
+		public boolean CanFireRight = true;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -266,6 +283,13 @@ public class HpmModVariables {
 			nbt.putBoolean("right", right);
 			nbt.putDouble("maxspeed", maxspeed);
 			nbt.putDouble("shipyaw", shipyaw);
+			nbt.putDouble("InventoryNum", InventoryNum);
+			nbt.putBoolean("FirstLogOn", FirstLogOn);
+			nbt.putBoolean("VersionWarning", VersionWarning);
+			nbt.putDouble("shipPilotingID", shipPilotingID);
+			nbt.putBoolean("CanFire", CanFire);
+			nbt.putBoolean("CanFireLeft", CanFireLeft);
+			nbt.putBoolean("CanFireRight", CanFireRight);
 			return nbt;
 		}
 
@@ -278,6 +302,13 @@ public class HpmModVariables {
 			right = nbt.getBoolean("right");
 			maxspeed = nbt.getDouble("maxspeed");
 			shipyaw = nbt.getDouble("shipyaw");
+			InventoryNum = nbt.getDouble("InventoryNum");
+			FirstLogOn = nbt.getBoolean("FirstLogOn");
+			VersionWarning = nbt.getBoolean("VersionWarning");
+			shipPilotingID = nbt.getDouble("shipPilotingID");
+			CanFire = nbt.getBoolean("CanFire");
+			CanFireLeft = nbt.getBoolean("CanFireLeft");
+			CanFireRight = nbt.getBoolean("CanFireRight");
 		}
 	}
 
@@ -309,6 +340,13 @@ public class HpmModVariables {
 					variables.right = message.data.right;
 					variables.maxspeed = message.data.maxspeed;
 					variables.shipyaw = message.data.shipyaw;
+					variables.InventoryNum = message.data.InventoryNum;
+					variables.FirstLogOn = message.data.FirstLogOn;
+					variables.VersionWarning = message.data.VersionWarning;
+					variables.shipPilotingID = message.data.shipPilotingID;
+					variables.CanFire = message.data.CanFire;
+					variables.CanFireLeft = message.data.CanFireLeft;
+					variables.CanFireRight = message.data.CanFireRight;
 				}
 			});
 			context.setPacketHandled(true);

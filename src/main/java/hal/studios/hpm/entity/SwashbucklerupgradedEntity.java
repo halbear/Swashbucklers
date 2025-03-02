@@ -56,6 +56,7 @@ import io.netty.buffer.Unpooled;
 import hal.studios.hpm.world.inventory.SwashbucklerinventoryMenu;
 import hal.studios.hpm.procedures.UpgradeddestroyedProcedure;
 import hal.studios.hpm.procedures.UpgradedSwashbucklerHurtProcedure;
+import hal.studios.hpm.procedures.SwashbucklerupgradedRightClickedOnEntityProcedure;
 import hal.studios.hpm.procedures.SwashbuckleroninitialspawnProcedure;
 import hal.studios.hpm.procedures.SmallShipBuoyancyProcedure;
 import hal.studios.hpm.init.HpmModEntities;
@@ -67,6 +68,7 @@ public class SwashbucklerupgradedEntity extends PathfinderMob {
 
 	public SwashbucklerupgradedEntity(EntityType<SwashbucklerupgradedEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -134,7 +136,7 @@ public class SwashbucklerupgradedEntity extends PathfinderMob {
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		SwashbuckleroninitialspawnProcedure.execute(this);
+		SwashbuckleroninitialspawnProcedure.execute(world, this);
 		return retval;
 	}
 
@@ -208,6 +210,13 @@ public class SwashbucklerupgradedEntity extends PathfinderMob {
 		}
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		SwashbucklerupgradedRightClickedOnEntityProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 
@@ -237,6 +246,7 @@ public class SwashbucklerupgradedEntity extends PathfinderMob {
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
+		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 10);
 		return builder;
 	}
 }

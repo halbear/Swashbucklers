@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:swashbucklerupgrade"
+    },
+    "title": {
+      "translate": "advancements.u_swashbuckler_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.u_swashbuckler_achievement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "u_swashbuckler_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0,
+    "recipes": [
+      "hpm:cutterrecipe_4",
+      "hpm:largemastrecipe",
+      "hpm:largehullrecipe",
+      "hpm:spanner_recipe"
+    ]
+  },
+  "parent": "hpm:swashbuckler_achievement"
+}

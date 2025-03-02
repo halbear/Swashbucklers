@@ -1,5 +1,5 @@
 {
-  "parent": "hpm:custom/handcannon",
+  "parent": "hpm:custom/handcannonedited",
   "textures": {
     "0": "hpm:blocks/handcannon",
     "particle": "hpm:items/handcannon"

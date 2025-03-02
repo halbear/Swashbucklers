@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:cutteritem"
+    },
+    "title": {
+      "translate": "advancements.cutter_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.cutter_achievement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cutter_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 0,
+    "recipes": [
+      "hpm:cuttermilitary"
+    ]
+  },
+  "parent": "hpm:u_swashbuckler_achievement"
+}

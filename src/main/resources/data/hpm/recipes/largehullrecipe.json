@@ -10,22 +10,22 @@
       "item": "minecraft:iron_block"
     },
     "3": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "4": {
       "item": "hpm:smallhull"
     },
     "5": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "6": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "7": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     },
     "8": {
-      "item": "minecraft:oak_log"
+      "tag": "minecraft:logs"
     }
   },
   "result": {

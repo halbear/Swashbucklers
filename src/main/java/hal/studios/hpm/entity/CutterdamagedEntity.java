@@ -54,9 +54,11 @@ import javax.annotation.Nonnull;
 import io.netty.buffer.Unpooled;
 
 import hal.studios.hpm.world.inventory.CutterinventoryMenu;
+import hal.studios.hpm.procedures.SplinterParticlesProcedure;
 import hal.studios.hpm.procedures.DamagedcutteroninitialspawnProcedure;
 import hal.studios.hpm.procedures.CutterdestroyedProcedure;
 import hal.studios.hpm.procedures.CutterdamagedOnEntityTickUpdateProcedure;
+import hal.studios.hpm.procedures.CutterSailsDamagedRightClickedOnEntityProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
 public class CutterdamagedEntity extends PathfinderMob {
@@ -66,6 +68,7 @@ public class CutterdamagedEntity extends PathfinderMob {
 
 	public CutterdamagedEntity(EntityType<CutterdamagedEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -114,6 +117,7 @@ public class CutterdamagedEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		SplinterParticlesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.DROWN)
@@ -206,6 +210,13 @@ public class CutterdamagedEntity extends PathfinderMob {
 		}
 		super.mobInteract(sourceentity, hand);
 		sourceentity.startRiding(this);
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Entity entity = this;
+		Level world = this.level;
+
+		CutterSailsDamagedRightClickedOnEntityProcedure.execute(world, x, y, z, entity, sourceentity);
 		return retval;
 	}
 

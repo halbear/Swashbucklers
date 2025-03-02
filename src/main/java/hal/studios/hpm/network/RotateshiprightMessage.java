@@ -53,7 +53,7 @@ public class RotateshiprightMessage {
 			return;
 		if (type == 0) {
 
-			ShiprotaterightProcedure.execute(world, x, y, z, entity);
+			ShiprotaterightProcedure.execute(entity);
 		}
 		if (type == 1) {
 

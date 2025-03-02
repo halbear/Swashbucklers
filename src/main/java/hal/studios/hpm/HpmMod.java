@@ -31,6 +31,7 @@ import java.util.function.Function;
 import java.util.function.BiConsumer;
 
 import hal.studios.hpm.init.HpmModTabs;
+import hal.studios.hpm.init.HpmModParticleTypes;
 import hal.studios.hpm.init.HpmModItems;
 import hal.studios.hpm.init.HpmModEntities;
 
@@ -48,6 +49,8 @@ public class HpmMod {
 
 		HpmModItems.REGISTRY.register(bus);
 		HpmModEntities.REGISTRY.register(bus);
+
+		HpmModParticleTypes.REGISTRY.register(bus);
 
 	}
 

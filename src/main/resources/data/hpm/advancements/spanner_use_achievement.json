@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:spanner"
+    },
+    "title": {
+      "translate": "advancements.spanner_use_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.spanner_use_achievement.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "spanner_use_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "hpm:spanner_achievement"
+}

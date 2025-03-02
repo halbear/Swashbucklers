@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:hand_cannon"
+    },
+    "title": {
+      "translate": "advancements.warfare_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.warfare_achievement.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "warfare_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "hpm:cannon_craft"
+}

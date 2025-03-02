@@ -14,6 +14,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerPlayer;
 
+import hal.studios.hpm.procedures.HandCannonRangedItemUsedProcedure;
+import hal.studios.hpm.procedures.CanUseCannonHandProcedure;
 import hal.studios.hpm.init.HpmModTabs;
 import hal.studios.hpm.init.HpmModItems;
 import hal.studios.hpm.entity.HandCannonEntity;
@@ -31,7 +33,7 @@ public class HandCannonItem extends Item {
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.BOW;
+		return UseAnim.NONE;
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class HandCannonItem extends Item {
 			double x = entity.getX();
 			double y = entity.getY();
 			double z = entity.getZ();
-			if (true) {
+			if (CanUseCannonHandProcedure.execute(entity)) {
 				ItemStack stack = ProjectileWeaponItem.getHeldProjectile(entity, e -> e.getItem() == HpmModItems.CANNONBALL.get());
 				if (stack == ItemStack.EMPTY) {
 					for (int i = 0; i < entity.getInventory().items.size(); i++) {
@@ -57,7 +59,7 @@ public class HandCannonItem extends Item {
 					}
 				}
 				if (entity.getAbilities().instabuild || stack != ItemStack.EMPTY) {
-					HandCannonEntity entityarrow = HandCannonEntity.shoot(world, entity, world.getRandom(), 2f, 3.9999999999999996, 0);
+					HandCannonEntity entityarrow = HandCannonEntity.shoot(world, entity, world.getRandom(), 2.5f, 3, 0);
 					itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
 					if (entity.getAbilities().instabuild) {
 						entityarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
@@ -75,6 +77,8 @@ public class HandCannonItem extends Item {
 								entity.getInventory().removeItem(stack);
 						}
 					}
+
+					HandCannonRangedItemUsedProcedure.execute(world, entity);
 				}
 			}
 		}

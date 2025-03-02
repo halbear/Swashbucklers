@@ -4,82 +4,82 @@ package hal.studios.hpm.entity;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.items.wrapper.EntityHandsInvWrapper;
+import net.minecraftforge.items.wrapper.EntityArmorInvWrapper;
+import net.minecraftforge.items.wrapper.CombinedInvWrapper;
+import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.common.capabilities.Capability;
 
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.projectile.ThrownPotion;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.util.Mth;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
+
+import io.netty.buffer.Unpooled;
+
+import hal.studios.hpm.world.inventory.CutterinventoryMenu;
+import hal.studios.hpm.procedures.SplinterParticlesProcedure;
 import hal.studios.hpm.procedures.CutterpiratedwreckProcedure;
+import hal.studios.hpm.procedures.CutterpiratedamagedNaturalEntitySpawningConditionProcedure;
 import hal.studios.hpm.procedures.CutterdamagedOnEntityTickUpdateProcedure;
 import hal.studios.hpm.init.HpmModEntities;
 
-public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAttackMob {
+@Mod.EventBusSubscriber
+public class CutterpiratedamagedEntity extends PathfinderMob {
+	@SubscribeEvent
+	public static void addLivingEntityToBiomes(BiomeLoadingEvent event) {
+		event.getSpawns().getSpawner(MobCategory.WATER_CREATURE).add(new MobSpawnSettings.SpawnerData(HpmModEntities.CUTTERPIRATEDAMAGED.get(), 1, 1, 1));
+	}
+
 	public CutterpiratedamagedEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(HpmModEntities.CUTTERPIRATEDAMAGED.get(), world);
 	}
 
 	public CutterpiratedamagedEntity(EntityType<CutterpiratedamagedEntity> type, Level world) {
 		super(type, world);
+		maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
-		this.setPathfindingMalus(BlockPathTypes.WATER, 0);
-		this.moveControl = new MoveControl(this) {
-			@Override
-			public void tick() {
-				if (CutterpiratedamagedEntity.this.isInWater())
-					CutterpiratedamagedEntity.this.setDeltaMovement(CutterpiratedamagedEntity.this.getDeltaMovement().add(0, 0.005, 0));
-				if (this.operation == MoveControl.Operation.MOVE_TO && !CutterpiratedamagedEntity.this.getNavigation().isDone()) {
-					double dx = this.wantedX - CutterpiratedamagedEntity.this.getX();
-					double dy = this.wantedY - CutterpiratedamagedEntity.this.getY();
-					double dz = this.wantedZ - CutterpiratedamagedEntity.this.getZ();
-					float f = (float) (Mth.atan2(dz, dx) * (double) (180 / Math.PI)) - 90;
-					float f1 = (float) (this.speedModifier * CutterpiratedamagedEntity.this.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
-					CutterpiratedamagedEntity.this.setYRot(this.rotlerp(CutterpiratedamagedEntity.this.getYRot(), f, 10));
-					CutterpiratedamagedEntity.this.yBodyRot = CutterpiratedamagedEntity.this.getYRot();
-					CutterpiratedamagedEntity.this.yHeadRot = CutterpiratedamagedEntity.this.getYRot();
-					if (CutterpiratedamagedEntity.this.isInWater()) {
-						CutterpiratedamagedEntity.this.setSpeed((float) CutterpiratedamagedEntity.this.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
-						float f2 = -(float) (Mth.atan2(dy, (float) Math.sqrt(dx * dx + dz * dz)) * (180 / Math.PI));
-						f2 = Mth.clamp(Mth.wrapDegrees(f2), -85, 85);
-						CutterpiratedamagedEntity.this.setXRot(this.rotlerp(CutterpiratedamagedEntity.this.getXRot(), f2, 5));
-						float f3 = Mth.cos(CutterpiratedamagedEntity.this.getXRot() * (float) (Math.PI / 180.0));
-						CutterpiratedamagedEntity.this.setZza(f3 * f1);
-						CutterpiratedamagedEntity.this.setYya((float) (f1 * dy));
-					} else {
-						CutterpiratedamagedEntity.this.setSpeed(f1 * 0.05F);
-					}
-				} else {
-					CutterpiratedamagedEntity.this.setSpeed(0);
-					CutterpiratedamagedEntity.this.setYya(0);
-					CutterpiratedamagedEntity.this.setZza(0);
-				}
-			}
-		};
+		setPersistenceRequired();
 	}
 
 	@Override
@@ -88,25 +88,9 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 	}
 
 	@Override
-	protected PathNavigation createNavigation(Level world) {
-		return new WaterBoundPathNavigation(this, world);
-	}
-
-	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(1, new RandomSwimmingGoal(this, 2, 40));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, CutterEntity.class, true, false));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, SwashbucklerupgradedEntity.class, true, false));
-		this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, SwashbucklerEntity.class, true, false));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, RaftEntity.class, true, false));
-		this.targetSelector.addGoal(6, new HurtByTargetGoal(this).setAlertOthers());
-		this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25, 20, 10f) {
-			@Override
-			public boolean canContinueToUse() {
-				return this.canUse();
-			}
-		});
+
 	}
 
 	@Override
@@ -115,8 +99,13 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 	}
 
 	@Override
+	public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+		return false;
+	}
+
+	@Override
 	public double getPassengersRidingOffset() {
-		return super.getPassengersRidingOffset() + -1.9;
+		return super.getPassengersRidingOffset() + -0.5;
 	}
 
 	@Override
@@ -136,6 +125,7 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
+		SplinterParticlesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.CACTUS)
@@ -153,6 +143,79 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 		CutterpiratedwreckProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
+	private final ItemStackHandler inventory = new ItemStackHandler(228) {
+		@Override
+		public int getSlotLimit(int slot) {
+			return 64;
+		}
+	};
+	private final CombinedInvWrapper combined = new CombinedInvWrapper(inventory, new EntityHandsInvWrapper(this), new EntityArmorInvWrapper(this));
+
+	@Override
+	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> capability, @Nullable Direction side) {
+		if (this.isAlive() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && side == null)
+			return LazyOptional.of(() -> combined).cast();
+		return super.getCapability(capability, side);
+	}
+
+	@Override
+	protected void dropEquipment() {
+		super.dropEquipment();
+		for (int i = 0; i < inventory.getSlots(); ++i) {
+			ItemStack itemstack = inventory.getStackInSlot(i);
+			if (!itemstack.isEmpty() && !EnchantmentHelper.hasVanishingCurse(itemstack)) {
+				this.spawnAtLocation(itemstack);
+			}
+		}
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound) {
+		super.addAdditionalSaveData(compound);
+		compound.put("InventoryCustom", inventory.serializeNBT());
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+		Tag inventoryCustom = compound.get("InventoryCustom");
+		if (inventoryCustom instanceof CompoundTag inventoryTag)
+			inventory.deserializeNBT(inventoryTag);
+	}
+
+	@Override
+	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
+		ItemStack itemstack = sourceentity.getItemInHand(hand);
+		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
+		if (sourceentity.isSecondaryUseActive()) {
+			if (sourceentity instanceof ServerPlayer serverPlayer) {
+				NetworkHooks.openGui(serverPlayer, new MenuProvider() {
+					@Override
+					public Component getDisplayName() {
+						return new TextComponent("cutter");
+					}
+
+					@Override
+					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+						FriendlyByteBuf packetBuffer = new FriendlyByteBuf(Unpooled.buffer());
+						packetBuffer.writeBlockPos(sourceentity.blockPosition());
+						packetBuffer.writeByte(0);
+						packetBuffer.writeVarInt(CutterpiratedamagedEntity.this.getId());
+						return new CutterinventoryMenu(id, inventory, packetBuffer);
+					}
+				}, buf -> {
+					buf.writeBlockPos(sourceentity.blockPosition());
+					buf.writeByte(0);
+					buf.writeVarInt(this.getId());
+				});
+			}
+			return InteractionResult.sidedSuccess(this.level.isClientSide());
+		}
+		super.mobInteract(sourceentity, hand);
+		sourceentity.startRiding(this);
+		return retval;
+	}
+
 	@Override
 	public void baseTick() {
 		super.baseTick();
@@ -160,26 +223,22 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 	}
 
 	@Override
-	public void performRangedAttack(LivingEntity target, float flval) {
-		HandCannonEntity.shoot(this, target);
-	}
-
-	@Override
-	public boolean canBreatheUnderwater() {
+	public boolean canCollideWith(Entity entity) {
 		return true;
 	}
 
 	@Override
-	public boolean checkSpawnObstruction(LevelReader world) {
-		return world.isUnobstructed(this);
-	}
-
-	@Override
-	public boolean isPushedByFluid() {
-		return false;
+	public boolean canBeCollidedWith() {
+		return true;
 	}
 
 	public static void init() {
+		SpawnPlacements.register(HpmModEntities.CUTTERPIRATEDAMAGED.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (entityType, world, reason, pos, random) -> {
+			int x = pos.getX();
+			int y = pos.getY();
+			int z = pos.getZ();
+			return CutterpiratedamagedNaturalEntitySpawningConditionProcedure.execute(world, x, y, z);
+		});
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -190,7 +249,6 @@ public class CutterpiratedamagedEntity extends PathfinderMob implements RangedAt
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
 		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 2);
-		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 0.5);
 		return builder;
 	}
 }

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "hpm:cuttermilitarised",
+    "hpm:cutterpiratedamaged",
+    "hpm:cutter_sails_damaged",
+    "hpm:cutterdamaged",
+    "hpm:cutter_militarised_damaged_sails",
+    "hpm:cuttermilitariseddamaged",
+    "hpm:cutter_pirate",
+    "hpm:cutter_pirate_damaged_sails",
+    "hpm:cutter"
+  ]
+}

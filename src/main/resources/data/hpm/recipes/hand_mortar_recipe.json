@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 45",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    },
+    "1": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    },
+    "2": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    },
+    "4": {
+      "item": "hpm:mortar_ball"
+    },
+    "5": {
+      "item": "minecraft:gunpowder"
+    },
+    "6": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    },
+    "7": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    },
+    "8": {
+      "item": "minecraft:cobbled_deepslate_slab"
+    }
+  },
+  "result": {
+    "item": "hpm:hand_mortar",
+    "count": 1
+  }
+}

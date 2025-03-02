@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "hpm:pirate_cutter_item"
+    },
+    "title": {
+      "translate": "advancements.pirate_cutter_achievement.title"
+    },
+    "description": {
+      "translate": "advancements.pirate_cutter_achievement.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "pirate_cutter_achievement": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "hpm:warfare_achievement"
+}
